@@ -46,6 +46,7 @@ Current documents include:
 - Scope of Works
 - Functional Requirements
 - Non-funtional Requirements
+- Decision Log
 Additional documentation will be added as development progresses.
 
 ---
