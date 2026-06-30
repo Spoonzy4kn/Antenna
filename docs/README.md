@@ -44,7 +44,7 @@ Current documents include:
 - Vision
 - Project Principles
 - Scope of Works
-
+- Functional Requirements
 Additional documentation will be added as development progresses.
 
 ---
