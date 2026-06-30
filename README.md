@@ -47,6 +47,7 @@ Current documents include:
 - Functional Requirements
 - Non-funtional Requirements
 - Decision Log
+- UI/UX Specification
 Additional documentation will be added as development progresses.
 
 ---
