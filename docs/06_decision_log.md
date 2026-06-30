@@ -3,21 +3,17 @@
 **Project:** Antenna  
 **Status:** Draft  
 **Version:** 0.1  
-**Last Updated:** 30 June 2026  
-
----
+**Last Updated:** 30 June 2026
 
 ## 1. Purpose
 
 This document records significant product, architecture, and project decisions for Antenna.
 
-The purpose of the decision log is to preserve the reasoning behind important choices so that future contributors can understand not only what was decided, but why it was decided.
+The purpose of the decision log is to preserve reasoning behind important choices so future contributors can understand not only what was decided, but why it was decided.
 
-This document is not intended to record every conversation or minor change. It should record decisions that affect project scope, architecture, implementation, user experience, privacy, compatibility, or maintainability.
+This document is not intended to record every conversation or minor change. It should record decisions that affect project scope, architecture, implementation, user experience, privacy, compatibility, policy compliance, or maintainability.
 
----
-
-## 2. Decision Record Format
+## 2. Decision record format
 
 Each decision should include:
 
@@ -38,12 +34,10 @@ Decision statuses may include:
 - Rejected.
 - Deprecated.
 
----
-
-## 3. Decision Register
+## 3. Decision register
 
 | ID | Title | Status | Date |
-|----|-------|--------|------|
+| --- | --- | --- | --- |
 | ADR-001 | Project Name | Accepted | 30 June 2026 |
 | ADR-002 | Native Android Application | Accepted | 30 June 2026 |
 | ADR-003 | Version 1 Compatibility Target | Accepted | 30 June 2026 |
@@ -52,13 +46,17 @@ Decision statuses may include:
 | ADR-006 | Privacy-First Default Position | Accepted | 30 June 2026 |
 | ADR-007 | Documentation-First Project Setup | Accepted | 30 June 2026 |
 | ADR-008 | Avoid Over-Engineering Version 1 | Accepted | 30 June 2026 |
+| ADR-009 | Primary Navigation Model | Proposed | 30 June 2026 |
+| ADR-010 | Modular Android Architecture Direction | Proposed | 30 June 2026 |
+| ADR-011 | Local NSFW Visibility Setting | Proposed | 30 June 2026 |
+| ADR-012 | Dependency Minimalism | Proposed | 30 June 2026 |
 
 ---
 
 # ADR-001: Project Name
 
 **Status:** Accepted  
-**Date:** 30 June 2026  
+**Date:** 30 June 2026
 
 ## Context
 
@@ -89,7 +87,7 @@ The project should include a clear disclaimer that it is independent and not aff
 # ADR-002: Native Android Application
 
 **Status:** Accepted  
-**Date:** 30 June 2026  
+**Date:** 30 June 2026
 
 ## Context
 
@@ -124,19 +122,19 @@ iOS, desktop, and web versions are outside the scope of Version 1.
 # ADR-003: Version 1 Compatibility Target
 
 **Status:** Accepted  
-**Date:** 30 June 2026  
+**Date:** 30 June 2026
 
 ## Context
 
 Antenna is intended to browse community-driven discussion content.
 
-The project should not unnecessarily describe itself as being permanently tied to a single provider. However, Version 1 needs a clear compatibility target to avoid excessive complexity.
+The project should not unnecessarily describe itself as permanently tied to a single provider. However, Version 1 needs a clear compatibility target to avoid excessive complexity.
 
 ## Decision
 
 Antenna Version 1 shall target compatibility with Reddit.
 
-The project documentation may describe the application more generally as a client for community-driven discussion platforms, while clearly stating that Version 1 is initially compatible with Reddit.
+The project documentation may describe the application more generally as a client for community-driven discussion platforms while clearly stating that Version 1 is initially compatible with Reddit.
 
 ## Rationale
 
@@ -155,7 +153,7 @@ Multiple provider support is out of scope for Version 1.
 # ADR-004: Local Favourites
 
 **Status:** Accepted  
-**Date:** 30 June 2026  
+**Date:** 30 June 2026
 
 ## Context
 
@@ -188,7 +186,7 @@ Future versions may add backup, restore, import, export, grouping, or optional s
 # ADR-005: No Advertising Within Application
 
 **Status:** Accepted  
-**Date:** 30 June 2026  
+**Date:** 30 June 2026
 
 ## Context
 
@@ -215,7 +213,7 @@ Any external content, platform-served content, or platform restrictions must be 
 # ADR-006: Privacy-First Default Position
 
 **Status:** Accepted  
-**Date:** 30 June 2026  
+**Date:** 30 June 2026
 
 ## Context
 
@@ -237,14 +235,14 @@ This supports the project principles of transparency, simplicity, and user contr
 
 The project may have less automatic diagnostic information available.
 
-If diagnostics or telemetry are ever considered, they must be explicitly documented, justified, and opt-in.
+If diagnostics or telemetry are ever considered, they must be explicitly documented, justified, optional, and opt-in.
 
 ---
 
 # ADR-007: Documentation-First Project Setup
 
 **Status:** Accepted  
-**Date:** 30 June 2026  
+**Date:** 30 June 2026
 
 ## Context
 
@@ -264,6 +262,8 @@ Initial documentation includes:
 - Functional Requirements.
 - Non-Functional Requirements.
 - Decision Log.
+- UI/UX Specification.
+- Architecture.
 
 ## Rationale
 
@@ -282,7 +282,7 @@ Implementation decisions should trace back to documented requirements and princi
 # ADR-008: Avoid Over-Engineering Version 1
 
 **Status:** Accepted  
-**Date:** 30 June 2026  
+**Date:** 30 June 2026
 
 ## Context
 
@@ -309,3 +309,154 @@ The Version 1 architecture will target Reddit compatibility.
 Future support for other platforms may require refactoring if it becomes a real requirement.
 
 ---
+
+# ADR-009: Primary Navigation Model
+
+**Status:** Proposed  
+**Date:** 30 June 2026
+
+## Context
+
+Antenna requires a simple navigation model that supports browsing, discovery, local favourites, and settings without clutter.
+
+## Decision
+
+Antenna shall use five primary navigation destinations:
+
+```text
+Home
+Search
+Explore
+My Subs
+Settings
+```
+
+Settings shall contain secondary sections:
+
+```text
+Appearance
+Content
+Privacy
+Account
+FAQ
+About
+```
+
+## Rationale
+
+This structure cleanly separates common user tasks:
+
+- Home for the user's local feed.
+- Search for direct lookup.
+- Explore for discovery.
+- My Subs for local favourites.
+- Settings for configuration and information.
+
+## Consequences
+
+The project must consistently explain that My Subs are local favourites, not Reddit account subscriptions.
+
+---
+
+# ADR-010: Modular Android Architecture Direction
+
+**Status:** Proposed  
+**Date:** 30 June 2026
+
+## Context
+
+Antenna needs a maintainable architecture that supports clear separation of UI, application logic, data access, network access, local storage, and platform services.
+
+## Decision
+
+Antenna should use a modular Android architecture with a small set of core and feature modules.
+
+Initial module direction:
+
+```text
+app
+core-ui
+core-model
+core-data
+core-network
+core-database
+feature-home
+feature-search
+feature-explore
+feature-my-subs
+feature-settings
+feature-post-detail
+```
+
+## Rationale
+
+This structure keeps feature ownership clear while avoiding a generic multi-platform plugin architecture.
+
+## Consequences
+
+The module structure may be simplified if it proves too heavy during implementation.
+
+Modules must exist because they solve a real separation problem, not because modularity looks professional.
+
+---
+
+# ADR-011: Local NSFW Visibility Setting
+
+**Status:** Proposed  
+**Date:** 30 June 2026
+
+## Context
+
+Antenna needs to handle NSFW-labelled content transparently and responsibly.
+
+## Decision
+
+Antenna shall include a local NSFW visibility setting under:
+
+```text
+Settings → Content → NSFW visibility
+```
+
+NSFW content shall be hidden or restricted by default. Users must confirm they are over 18 before enabling visibility.
+
+The setting must not be presented as a way to bypass platform restrictions.
+
+## Rationale
+
+This supports user control while respecting platform limitations and user safety.
+
+## Consequences
+
+The setting must be applied consistently across Home, Search, Explore, community feeds, post detail screens, and media views where supported.
+
+---
+
+# ADR-012: Dependency Minimalism
+
+**Status:** Proposed  
+**Date:** 30 June 2026
+
+## Context
+
+Android applications can accumulate dependency bloat quickly, affecting application size, privacy, security, maintenance, and build reliability.
+
+## Decision
+
+Dependencies shall be added deliberately and only when they provide clear value.
+
+Before adding a dependency, contributors should ask:
+
+- Does Android already provide this capability?
+- Is the dependency actively maintained?
+- Does it introduce privacy concerns?
+- Does it increase app size significantly?
+- Does it make the code easier or harder to understand?
+- Is it necessary for Version 1?
+
+## Rationale
+
+This supports simplicity, efficiency, privacy, and maintainability.
+
+## Consequences
+
+Dependency choices should be reviewed during pull requests and documented where significant.

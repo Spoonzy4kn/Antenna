@@ -1,0 +1,41 @@
+# Android / Gradle
+.gradle/
+build/
+*/build/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+
+# Kotlin / Java
+*.class
+out/
+
+# Signing and secrets
+*.jks
+*.keystore
+*.p12
+*.pem
+.env
+.env.*
+secrets.properties
+credentials.json
+local.secrets.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Archives
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
