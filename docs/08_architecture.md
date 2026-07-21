@@ -94,42 +94,42 @@ The high-level application structure is:
 
 ```text
 Antenna
-│
-├── User Interface
-│   ├── Screens
-│   ├── Navigation
-│   ├── Theme
-│   └── Reusable UI components
-│
-├── Application Logic
-│   ├── View models
-│   ├── Screen state
-│   ├── User actions
-│   └── Feature coordination
-│
-├── Data Layer
-│   ├── Repositories
-│   ├── Data mapping
-│   ├── Caching rules
-│   └── Data source coordination
-│
-├── Network Layer
-│   ├── Reddit-compatible API access
-│   ├── Request handling
-│   ├── Response parsing
-│   └── Network error handling
-│
-├── Local Storage
-│   ├── Local favourites
-│   ├── Settings
-│   ├── Cache
-│   └── Recently viewed data, where required
-│
-└── Platform Services
-    ├── Android permissions
-    ├── External browser links
-    ├── Media handling
-    └── System theme integration
+|
+|-- User Interface
+|   |-- Screens
+|   |-- Navigation
+|   |-- Theme
+|   `-- Reusable UI components
+|
+|-- Application Logic
+|   |-- View models
+|   |-- Screen state
+|   |-- User actions
+|   `-- Feature coordination
+|
+|-- Data Layer
+|   |-- Repositories
+|   |-- Data mapping
+|   |-- Caching rules
+|   `-- Data source coordination
+|
+|-- Network Layer
+|   |-- Reddit-compatible API access
+|   |-- Request handling
+|   |-- Response parsing
+|   `-- Network error handling
+|
+|-- Local Storage
+|   |-- Local favourites
+|   |-- Settings
+|   |-- Cache
+|   `-- Recently viewed data, where required
+|
+`-- Platform Services
+    |-- Android permissions
+    |-- External browser links
+    |-- Media handling
+    `-- System theme integration
 ```
 
 ---
@@ -142,21 +142,21 @@ Proposed structure:
 
 ```text
 Antenna
-│
-├── app
-│
-├── core-ui
-├── core-model
-├── core-data
-├── core-network
-├── core-database
-│
-├── feature-home
-├── feature-search
-├── feature-explore
-├── feature-my-subs
-├── feature-settings
-└── feature-post-detail
+|
+|-- app
+|
+|-- core-ui
+|-- core-model
+|-- core-data
+|-- core-network
+|-- core-database
+|
+|-- feature-home
+|-- feature-search
+|-- feature-explore
+|-- feature-my-subs
+|-- feature-settings
+`-- feature-post-detail
 ```
 
 This structure may be adjusted during implementation if it becomes too heavy for the initial build.
@@ -383,19 +383,26 @@ Typical data flow:
 
 ```text
 User action
-    ↓
+    |
+    v
 UI screen
-    ↓
+    |
+    v
 View model / application logic
-    ↓
+    |
+    v
 Repository
-    ↓
+    |
+    v
 Network and/or local storage
-    ↓
+    |
+    v
 Repository maps result
-    ↓
+    |
+    v
 View model updates screen state
-    ↓
+    |
+    v
 UI displays result
 ```
 

@@ -1,6 +1,6 @@
 # Antenna
 
-**Status:** Pre-Alpha / Planning  
+**Status:** Pre-Alpha / Android skeleton started
 **Platform:** Android  
 **Primary technology direction:** Kotlin, Jetpack Compose, Gradle  
 **Version 1 compatibility target:** Reddit  
@@ -10,7 +10,7 @@ Antenna is an open-source Android application for browsing community-driven disc
 
 Version 1 is scoped as a focused Android client compatible with Reddit. The project is intentionally not trying to reproduce every feature of Reddit or every feature of existing third-party clients. Its purpose is to establish a stable, maintainable, privacy-conscious foundation that can support community browsing, post reading, comment reading, local favourites, basic search, and simple settings without unnecessary complexity.
 
-Antenna is currently in the documentation-first planning phase. This repository should be treated as a product and engineering specification until application implementation begins.
+Antenna has moved from documentation-only planning into the first Android skeleton. The current app code is intentionally minimal: it establishes the native Android project, Compose setup, application ID, basic theme, primary navigation shell, and placeholder screens.
 
 ---
 
@@ -126,58 +126,76 @@ Repository-level supporting documents:
 
 ```text
 Antenna/
-├── README.md
-├── CHANGELOG.md
-├── CODE_OF_CONDUCT.md
-├── CONTRIBUTING.md
-├── LICENSE_NOTICE.md
-├── SECURITY.md
-├── docs/
-│   ├── 00_documentation_index.md
-│   ├── 01_vision.md
-│   ├── 02_project_principles.md
-│   ├── 03_scope_of_works.md
-│   ├── 04_functional_requirements.md
-│   ├── 05_non_functional_requirements.md
-│   ├── 06_decision_log.md
-│   ├── 07_ui_ux_specification.md
-│   ├── 08_architecture.md
-│   ├── 09_product_requirements_document.md
-│   ├── 10_user_stories_and_journeys.md
-│   ├── 11_data_privacy_security.md
-│   ├── 12_accessibility_requirements.md
-│   ├── 13_testing_strategy.md
-│   ├── 14_release_and_versioning.md
-│   ├── 15_reddit_compatibility_and_policy.md
-│   ├── 16_open_questions_risks_assumptions.md
-│   ├── 17_requirements_traceability_matrix.md
-│   ├── 18_roadmap.md
-│   ├── 19_glossary.md
-│   ├── 20_implementation_backlog.md
-│   ├── 21_documentation_audit.md
-│   ├── adr/
-│   │   └── ADR-000-template.md
-│   └── templates/
-│       ├── feature_spec_template.md
-│       └── release_checklist_template.md
-└── app / core-* / feature-* modules once implementation begins
+|-- README.md
+|-- CHANGELOG.md
+|-- CODE_OF_CONDUCT.md
+|-- CONTRIBUTING.md
+|-- LICENSE_NOTICE.md
+|-- SECURITY.md
+|-- docs/
+|   |-- 00_documentation_index.md
+|   |-- 01_vision.md
+|   |-- 02_project_principles.md
+|   |-- 03_scope_of_works.md
+|   |-- 04_functional_requirements.md
+|   |-- 05_non_functional_requirements.md
+|   |-- 06_decision_log.md
+|   |-- 07_ui_ux_specification.md
+|   |-- 08_architecture.md
+|   |-- 09_product_requirements_document.md
+|   |-- 10_user_stories_and_journeys.md
+|   |-- 11_data_privacy_security.md
+|   |-- 12_accessibility_requirements.md
+|   |-- 13_testing_strategy.md
+|   |-- 14_release_and_versioning.md
+|   |-- 15_reddit_compatibility_and_policy.md
+|   |-- 16_open_questions_risks_assumptions.md
+|   |-- 17_requirements_traceability_matrix.md
+|   |-- 18_roadmap.md
+|   |-- 19_glossary.md
+|   |-- 20_implementation_backlog.md
+|   |-- 21_documentation_audit.md
+|   |-- adr/
+|   |   `-- ADR-000-template.md
+|   `-- templates/
+|       |-- feature_spec_template.md
+|       `-- release_checklist_template.md
+`-- app / core-* / feature-* modules once implementation begins
 ```
 
 ---
 
 ## Implementation status
 
-Application code has not yet been documented as present. Before implementation starts, the repository should include a finalised minimum Android project scaffold, Gradle wrapper, dependency policy, build instructions, and at least one smoke test path.
+Application code is now present under `app/`.
 
-Once source code exists, the README should be expanded with:
+Current implementation baseline:
 
-- Required Android Studio version.
-- Required JDK version.
-- Build command.
-- Test command.
-- Emulator/device setup.
-- Troubleshooting steps.
-- Screenshot or GIF of the current app state.
+- Single Android application module: `app`.
+- Kotlin and Jetpack Compose configured through Gradle Kotlin DSL.
+- Application ID: `dev.spoonzy4kn.antenna`.
+- Minimum SDK: 26.
+- Compile and target SDK: 35.
+- Primary navigation shell: Home, Search, Explore, My Subs, Settings.
+- Placeholder screens for each primary destination.
+- Initial smoke unit test path.
+
+Build notes:
+
+- Use Android Studio with JDK 17 support.
+- Install Android SDK 35.
+- Open the repository root in Android Studio and allow Gradle sync to download dependencies.
+- Command-line build, once JDK 17 and Android SDK 35 are installed:
+
+```powershell
+.\gradlew.bat assembleDebug
+```
+
+- Command-line unit test, once JDK 17 and Android SDK 35 are installed:
+
+```powershell
+.\gradlew.bat testDebugUnitTest
+```
 
 ---
 

@@ -50,12 +50,13 @@ Decision statuses may include:
 | ADR-010 | Modular Android Architecture Direction | Proposed | 30 June 2026 |
 | ADR-011 | Local NSFW Visibility Setting | Proposed | 30 June 2026 |
 | ADR-012 | Dependency Minimalism | Proposed | 30 June 2026 |
+| ADR-013 | Initial Android Skeleton Baseline | Accepted | 30 June 2026 |
 
 ---
 
 # ADR-001: Project Name
 
-**Status:** Accepted  
+**Status:** Accepted
 **Date:** 30 June 2026
 
 ## Context
@@ -414,7 +415,7 @@ Antenna needs to handle NSFW-labelled content transparently and responsibly.
 Antenna shall include a local NSFW visibility setting under:
 
 ```text
-Settings → Content → NSFW visibility
+Settings > Content > NSFW visibility
 ```
 
 NSFW content shall be hidden or restricted by default. Users must confirm they are over 18 before enabling visibility.
@@ -460,3 +461,47 @@ This supports simplicity, efficiency, privacy, and maintainability.
 ## Consequences
 
 Dependency choices should be reviewed during pull requests and documented where significant.
+
+---
+
+# ADR-013: Initial Android Skeleton Baseline
+
+**Status:** Accepted
+**Date:** 30 June 2026
+
+## Context
+
+Antenna needs to move from documentation-only planning into an Android implementation while keeping the first technical step small and reversible.
+
+The project still has several larger decisions open, including local storage, networking, media loading, and dependency injection. Those decisions are not required to establish the first launchable application shell.
+
+## Decision
+
+The initial implementation baseline shall use:
+
+- A single `app` module.
+- Kotlin.
+- Jetpack Compose.
+- Gradle Kotlin DSL.
+- Application ID `dev.spoonzy4kn.antenna`.
+- Minimum SDK 26.
+- Compile SDK 35.
+- Target SDK 35.
+- JDK 17 language target.
+- Primary navigation destinations: Home, Search, Explore, My Subs, and Settings.
+
+The larger proposed module structure remains an architecture direction, not a requirement for the first scaffold.
+
+## Rationale
+
+Starting with one Android application module keeps the project easy to import, build, and change while the product foundation is still forming.
+
+Compose matches the accepted native Android direction and supports the UI/UX specification without requiring XML screen layouts.
+
+The chosen application ID avoids Reddit branding and gives the project a stable package namespace.
+
+## Consequences
+
+The first implementation step does not yet include local storage, network access, real feed data, or production settings.
+
+Future work may split code into core and feature modules once there is enough real behaviour to justify the added structure.

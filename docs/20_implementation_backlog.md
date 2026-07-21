@@ -1,7 +1,7 @@
 # Implementation Backlog
 
 **Project:** Antenna  
-**Status:** Draft  
+**Status:** In progress
 **Version:** 0.1  
 **Last Updated:** 30 June 2026
 
@@ -35,16 +35,20 @@ Definition of done:
 
 ## 3. Epic 2: Android skeleton
 
+Status: started.
+
 Tasks:
 
-- Create Android project.
-- Configure Kotlin.
-- Configure Jetpack Compose.
-- Configure Gradle.
-- Select application ID.
-- Add basic theme.
-- Add primary navigation shell.
-- Add placeholder screens.
+- Create Android project. Started.
+- Configure Kotlin. Started.
+- Configure Jetpack Compose. Started.
+- Configure Gradle. Started.
+- Select application ID. Started.
+- Add basic theme. Started.
+- Add primary navigation shell. Started.
+- Add placeholder screens. Started.
+- Generate and commit Gradle wrapper. Started.
+- Confirm build and launch on emulator/device.
 
 Definition of done:
 
